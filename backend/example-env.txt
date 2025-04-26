@@ -1,0 +1,6 @@
+DB=postgresql+asyncpg://{Your username}:{Your password}@{Your host}:{Your port}/restaurant
+CURRENCY_FREAKS_KEY={Your api key from the site}
+MAIL_USERNAME={Username created on mailjet.com}
+MAIL_PASSWORD={Password created on mailjet.com}
+MAIL_FROM={Your email that is on mailjet.com}
+MAIL_FROM_NAME={Name for the email}
