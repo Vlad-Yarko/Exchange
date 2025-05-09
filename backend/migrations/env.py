@@ -9,7 +9,12 @@ from alembic import context
 # access to the values within the .ini file in use.
 
 
-from src.databases.models.user import User
+from src.databases.models.web_user import WebUser
+from src.databases.models.tg_user import TelegramUser
+from src.databases.models.crypto import Crypto
+from src.databases.models.currency import Currency
+from src.databases.models.crypto_subscribes import CryptoSubscribe
+from src.databases.models.currency_subscribes import CurrencySubscribe
 from src.databases.models.base import Base
 from src.config import settings
 

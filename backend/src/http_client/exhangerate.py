@@ -1,7 +1,9 @@
+from typing import Union
+
 from aiohttp import ClientSession
 
-from ..http_client.http_client import HTTPClient
-from ..config import settings
+from src.http_client.http_client import HTTPClient
+from src.config import settings
 
 
 class HTTPClientExchangeRate(HTTPClient):
@@ -10,7 +12,7 @@ class HTTPClientExchangeRate(HTTPClient):
             base_url='https://api.exchangerate.host/'
         )
 
-    async def get_symbol_price(self, symbol1, symbol2) -> dict:
+    async def get_symbol_price(self, symbol1, symbol2) -> Union[dict, bool]:
         self.endpoint = 'live'
         self.params = {
             'access_key': settings.EXCHANGE_API_KEY,

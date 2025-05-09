@@ -1,7 +1,9 @@
+from typing import Union
+
 from aiohttp import ClientSession
 
 from ..http_client.http_client import HTTPClient
-from ..config import settings
+from config import settings
 
 
 class HTTPClientCurrencyFreaks(HTTPClient):
@@ -10,7 +12,7 @@ class HTTPClientCurrencyFreaks(HTTPClient):
             base_url='https://api.currencyfreaks.com/v2.0/'
         )
 
-    async def get_symbol_price(self, symbol1: str, symbol2: str) -> dict:
+    async def get_symbol_price(self, symbol1: str, symbol2: str) -> Union[dict, bool]:
         self.endpoint = 'rates/latest'
         self.params = {
             'apikey': settings.CURRENCY_FREAKS_KEY,

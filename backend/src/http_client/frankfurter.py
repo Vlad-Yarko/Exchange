@@ -1,7 +1,8 @@
+from typing import Union
+
 from aiohttp import ClientSession
 
 from ..http_client.http_client import HTTPClient
-from ..config import settings
 
 
 class HTTPClientFrankFurter(HTTPClient):
@@ -10,7 +11,7 @@ class HTTPClientFrankFurter(HTTPClient):
             base_url='https://api.frankfurter.dev/v1/'
         )
 
-    async def get_symbol_price(self, symbol1, symbol2) -> dict:
+    async def get_symbol_price(self, symbol1, symbol2) -> Union[dict, bool]:
         self.endpoint = 'latest'
         self.params = {
             'base': symbol1,
@@ -24,12 +25,12 @@ class HTTPClientFrankFurter(HTTPClient):
                 if response.status == 200:
                     data = await response.json()
                 else:
-                    # data = False
-                    data = await response.json()
+                    data = False
+                    # data = await response.json()
         return data
 
 
-import asyncio
-cl = HTTPClientFrankFurter()
-data = asyncio.run(cl.get_symbol_price('USD', 'UAH'))
-print(data)
+# import asyncio
+# cl = HTTPClientFrankFurter()
+# data = asyncio.run(cl.get_symbol_price('USD', 'UAH'))
+# print(data)

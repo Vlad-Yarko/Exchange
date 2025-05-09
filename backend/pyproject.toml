@@ -26,7 +26,9 @@ dependencies = [
     "flask-cors (>=5.0.1,<6.0.0)",
     "authlib (>=1.5.2,<2.0.0)",
     "requests (>=2.32.3,<3.0.0)",
-    "aiogram (>=3.20.0.post0,<4.0.0)"
+    "aiogram (>=3.20.0.post0,<4.0.0)",
+    "jinja2 (>=3.1.6,<4.0.0)",
+    "phonenumbers (>=9.0.4,<10.0.0)"
 ]
 
 

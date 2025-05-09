@@ -8,7 +8,7 @@ class Logger:
         self.filename = os.path.join(self.log_directory, 'logs.log')
         self.level = logging.DEBUG
         self.filemode = 'a'
-        self.format = '%(asctime)s-%(message)s-%(levelname)s'
+        self.format = '%(levelname)s---%(asctime)s---%(message)s---%(name)s'
 
         with open(self.filename, 'w'):
             pass
@@ -21,7 +21,7 @@ class Logger:
             format=self.format
         )
 
-    def make_router_logger(self, name: str) -> 'APIRouterLogger':
+    def make_router_logger(self, name: str) -> 'RouterLogger':
         lo = logging.getLogger(name)
         lo.setLevel(self.level)
         file_handler = logging.FileHandler(self.filename, mode=self.filemode)
@@ -31,11 +31,11 @@ class Logger:
         # stream_handler.setFormatter(logging.Formatter(self.format))
         # lo.addHandler(stream_handler)
 
-        api_logger = APIRouterLogger(lo)
+        api_logger = RouterLogger(lo)
         return api_logger
 
 
-class APIRouterLogger:
+class RouterLogger:
     def __init__(self, api_logger):
         self.logger = api_logger
 

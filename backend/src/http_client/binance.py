@@ -1,6 +1,8 @@
+from typing import Union
+
 from aiohttp import ClientSession
 
-from ..http_client.http_client import HTTPClient
+from src.http_client.http_client import HTTPClient
 
 
 class HTTPClientBinance(HTTPClient):
@@ -9,7 +11,7 @@ class HTTPClientBinance(HTTPClient):
             base_url='https://api.binance.com/api/v3/'
         )
 
-    async def get_symbol_price(self, symbol: str) -> dict:
+    async def get_symbol_price(self, symbol: str) -> Union[dict, bool]:
         self.endpoint = 'ticker/price'
         self.params = {
             'symbol': symbol

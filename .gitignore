@@ -185,8 +185,10 @@ backend/ENV/
 backend/env.bak/
 backend/venv.bak/
 backend/.idea/
-backend/src/client_secret.json
+backend/src/api/client_secret.json
 backend/src/logger/logs.log
+backend/src/api/keys/public_key.pem
+backend/src/api/keys/private_key.pem
 
 
 # FRONTEND

@@ -1,8 +1,9 @@
+import pathlib
+from typing import ClassVar
+
 from pydantic_settings import BaseSettings, SettingsConfigDict
 from dotenv import load_dotenv, find_dotenv
 
-import pathlib
-from typing import ClassVar
 
 BASE_DIR = pathlib.Path(__file__).parent
 load_dotenv(find_dotenv())
@@ -10,7 +11,7 @@ load_dotenv(find_dotenv())
 
 class Settings(BaseSettings):
     DB: str
-    CURRENCY_FREAKS_KEY: str
+    # CURRENCY_FREAKS_KEY: str
     MAIL_USERNAME: str
     MAIL_PASSWORD: str
     MAIL_FROM: str
@@ -18,9 +19,11 @@ class Settings(BaseSettings):
     CLIENT_ID: str
     CLIENT_SECRET: str
     SECRET_KEY: str
+    BOT_TOKEN: str
+    EXCHANGE_API_KEY: str
 
-    PRIVATE_KEY: ClassVar[str] = (BASE_DIR / 'keys/private_key.pem').read_text()
-    PUBLIC_KEY: ClassVar[str] = (BASE_DIR / 'keys/public_key.pem').read_text()
+    PRIVATE_KEY: ClassVar[str] = (BASE_DIR / 'api/keys/private_key.pem').read_text()
+    PUBLIC_KEY: ClassVar[str] = (BASE_DIR / 'api/keys/public_key.pem').read_text()
 
     model_config = SettingsConfigDict(env_file='.env')
 

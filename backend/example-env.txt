@@ -1,6 +1,11 @@
-DB=postgresql+asyncpg://{Your username}:{Your password}@{Your host}:{Your port}/restaurant
-CURRENCY_FREAKS_KEY={Your api key from the site}
+DB=postgresql+asyncpg://{Your username}:{Your password}@{Your host}:{Your port}/exchange
+### CURRENCY_FREAKS_KEY={Your api key from the site}
 MAIL_USERNAME={Username created on mailjet.com}
 MAIL_PASSWORD={Password created on mailjet.com}
 MAIL_FROM={Your email that is on mailjet.com}
 MAIL_FROM_NAME={Name for the email}
+CLIENT_ID={Your client id from Google cloud from client_secret.json} (You need to generate it on https://console.cloud.google.com/)
+CLIENT_SECRET={Your client secret from Google cloud from client_secret.json} ((You need to generate it on https://console.cloud.google.com/))
+SECRET_KEY={Secret key for storing sessions} (Some random secret symbols)
+BOT_TOKEN={Your bot token generated from @BotFather in telegram}
+EXCHANGE_API_KEY={Your api key from the site} (https://apilayer.com/)

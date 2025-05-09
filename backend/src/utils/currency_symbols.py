@@ -1,5 +1,0 @@
-symbols = (
-    'USD',
-    'UAH',
-    'EUR'
-)

@@ -3,26 +3,30 @@ import {
     createBrowserRouter,
     Route
 } from "react-router-dom";
-import Layout from "./Components/Layout/Layout.jsx";
-import Home from "./Components/Home/Home.jsx";
-import Login from "./Components/Login/Login.jsx";
-import Logout from "./Components/Logout/Logout.jsx";
-import Signup from "./Components/Signup/Signup.jsx";
-import AuthFormMiddleware from "./Components/AuthFormMiddleware/AuthFormMiddleware.jsx";
-import Error404 from "./Components/Error404/Error404.jsx";
-import Profile from "./Components/Profile/Profile.jsx";
+import Layout from "./Components/layouts/Layout/Layout.jsx";
+import ProtectedMiddleware from "./Components/middlewares/ProtectedMiddleware/ProtectedMiddleware.jsx";
+import AuthMiddleware from "./Components/middlewares/AuthMiddleware/AuthMiddleware.jsx";
+import Home from "./Components/pages/Home/Home.jsx";
+import Error404 from "./Components/pages/Error404/Error404.jsx";
+import Signup from "./Components/pages/Singup/Signup.jsx";
+import Login from "./Components/pages/Login/Login.jsx";
+import Account from "./Components/pages/Account/Account.jsx";
+import AuthFormMiddleware from "./Components/middlewares/AuthFormMiddleware/AuthFormMiddleware.jsx";
 
 
 const router = createBrowserRouter(
     createRoutesFromElements(
         <Route path='/' element={<Layout />}>
-            <Route path='' element={<Home />}/>
-            <Route path='logout' element={<Logout />}/>
-            <Route path='' element={<AuthFormMiddleware />}>
-                <Route path='login' element={<Login />}/>
-                <Route path='signup' element={<Signup />}/>
+            <Route path='' element={<ProtectedMiddleware />}>
+                <Route path='' element={<Home />}/>
+                <Route path='account/me' element={<Account />}/>
             </Route>
-            <Route path='me' element={<Profile />}/>
+            <Route path='auth/' element={<AuthMiddleware />}>
+                <Route path='' element={<AuthFormMiddleware />}>
+                    <Route path='signup' element={<Signup />}/>
+                    <Route path='login' element={<Login />}/>
+                </Route>
+            </Route>
             <Route path='*' element={<Error404 />}/>
         </Route>
     )

@@ -1,17 +1,9 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useEffect, useState } from 'react';
+import { useLocation } from "react-router-dom";
+import api from "../api.js";
 
-export const AuthFormContext = createContext({
-    username: '',
-    setUsername: () => {},
-    password: '',
-    setPassword: () => {},
-    usernameError: '',
-    setUsernameError: () => {},
-    passwordError: '',
-    setPasswordError: () => {},
-    usernameValidate: () => '',
-    passwordValidate: () => '',
-})
+
+export const AuthFormContext = createContext();
 
 
 export const AuthFormContextProvider = ({ children }) => {
@@ -22,8 +14,8 @@ export const AuthFormContextProvider = ({ children }) => {
     const [ passwordError, setPasswordError ] = useState('')
 
     const usernameValidate = (u) => {
-        if (u.length < 2 || u.length > 25) {
-            return 'Username must be between 2 and 25 characters'
+        if (u.length < 3 || u.length > 40) {
+            return 'Username must be between 3 and 40 characters'
         }
         if ([' ', '!', '?', '<', '>', '.', '/', '\\', '|', ':', ';', '`', '~', '!', '@', '#', "&"]
             .some(element => u.includes(element))) {
@@ -33,8 +25,8 @@ export const AuthFormContextProvider = ({ children }) => {
     }
 
     const passwordValidate = (p) => {
-        if (p.length < 8 || p.length > 50) {
-            return 'Password must be between 8 and 50 characters'
+        if (p.length < 8 || p.length > 70) {
+            return 'Password must be between 8 and 70 characters'
         }
         return ''
     }
@@ -49,9 +41,10 @@ export const AuthFormContextProvider = ({ children }) => {
             setUsernameError,
             passwordError,
             setPasswordError,
-            usernameValidate,
-            passwordValidate}}>
-            {children}
+            passwordValidate,
+            usernameValidate
+        }}>
+            { children }
         </AuthFormContext.Provider>
     )
 }
